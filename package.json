@@ -1,20 +1,21 @@
 {
-  "name": "novi-eindopdr-webdev-recipes",
+  "name": "cookin-moods-recipes-version2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Webapplicatie voor ReceptKeuze,\r Versie 1.0",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
-  "author": "",
+  "author": "HeCu22",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.4.0",
+    "buffer": "^6.0.3",
+    "parcel": "^2.5.0",
     "parcel-plugin-nuke-dist": "^1.0.1",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.27.2"
   }
 }

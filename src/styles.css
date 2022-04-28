@@ -1,11 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Roboto&family=Rock+Salt&display=swap');
 
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Introduction
+        4.3 Work
+        4.4 Services
+        4.5 Contact
+        4.6 Footer
+    5. Media Queries
+////////////////////////*/
 
+/* ------------------------------- 1. Global Styles -------------------------------- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+/* ------------------------------- 2. Typography -------------------------------- */
 
 h1, h2, h3, h4 {
     font-family: 'Merriweather', Georgia, serif;
@@ -36,10 +55,9 @@ ul {
     list-style: none;
     margin-left: 10px;
 }
+/* ------------------------------- 3. Layout --------------------------------------- */
 
-/*--------------------------*/
-/*       reusable           */
-/*--------------------------*/
+/* --------------- 3.1 Reusables ----------------------- */
 
 .row {
     display: flex;
@@ -51,8 +69,33 @@ ul {
     flex-direction: column;
 }
 
+/* De buitenste container is altijd de volledige schermbreedte. Het is een flexbox container die zijn inhoud altijd netjes horizontaal centreert */
+.outer-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*De binnenste container is maximaal 1400px breed, zodat het er ook goed uitziet op brede schermen.
+Hij mag krimpen als het scherm minder breed wordt, maar niet groeien als er meer ruimte is.*/
+.inner-col {
+    flex-basis: 1400px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
+    margin: 0 20px;
+    /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .blankline {
     margin-top: 5px;
+    padding-bottom: 5px;
 }
 
 .high-light {
@@ -64,83 +107,12 @@ ul {
 
 }
 
-
-/*---------------------------*/
-.top {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 30px;
-
-
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: fixed;
-    top: 0;
-    width: 700px;
-}
-
-.icon-img {
-    width: 100px;
-    height: 100px;
-    border: solid 1px lightblue;
-    border-radius: 10%;
-    margin: 20px;
-
-}
-
-.icon-img-extra {
-    margin: 10px;
-}
-
-.icon-img32 {
-    width: 50px;
-    /*padding: 5px;*/
-    margin: 5px;
-    border: solid 1px lightblue;
-    border-radius: 10%;
-}
-
-.blankline {
-    padding-bottom: 5px;
-}
-
-/*---attributes for recipe line items */
-
-.font-p {
-    margin: 5px;
-    padding: 5px;
-    font-size: medium;
-}
-
-.img-p {
-    width: 20%;
-    border-radius: 10%;
-}
-
-
-
-.recipe-line {
-    display: flex;
-    flex-direction: row;
-
-}
-
-
+/* --------------- 3.2 Other --------------------------- */
 ::placeholder {
     font-weight: lighter;
     color: palevioletred;
 }
-
-
+/*---------------------------*/
 .ref-back::after, .ref-menu::after, .ref-null::after, .ref-top::after, .ref-sel::after {
     display: inline-block;
     content: "";
@@ -174,6 +146,101 @@ ul {
     border: none;
 }
 
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 Header ------------------------- */
+.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 30px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    /*width: 700px;*/
+    width: 100%;
+
+}
+
+.icon-img {
+    width: 100px;
+    height: 100px;
+    border: solid 1px lightblue;
+    border-radius: 10%;
+    margin: 20px;
+
+}
+
+.icon-img-extra {
+    margin: 10px;
+}
+
+.icon-img32 {
+    /*width: 50px;*/
+    /*padding: 5px;*/
+    width: 100%;
+    margin: 5px;
+    border: solid 1px lightblue;
+    border-radius: 10%;
+}
+
+.icon-img-menu, .icon-img-find {
+    display: block;
+    width: 78px;
+    height: 78px;
+    margin: 60px 0 0 0;
+    position: absolute;
+    bottom: 0;
+    /*Hiermee zeggen we: plaats 'm horizontaal gezien op 50% van de breedte,
+    MAAR wel min de helft van de breedte van de afbeelding zelf (width: 78px) */
+    left: calc(25% - 39px);
+    background-image: url(assets/icon-menu.png);
+}
+
+.icon-img-find {
+    left: calc(75% - 39px);
+    background-image: url(assets/icon-menu.png);
+}
+
+
+#fill-img {
+    width: 300px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px;
+    border-radius: 20px;
+}
+
+/*---attributes for recipe line items */
+
+.font-p {
+    margin: 5px;
+    padding: 5px;
+    font-size: medium;
+}
+
+.img-p {
+    width: 20%;
+    border-radius: 10%;
+}
+
+
+
+.recipe-line {
+    display: flex;
+    flex-direction: row;
+
+}
 
 #sub-header {
     text-align: center;
@@ -221,7 +288,7 @@ ul {
 /*-----recipe line items */
 
 #head-img {
-    width: 500px;
+    width: 100%;
     padding: 5px;
     margin: 5px;
     border: 5px white;
@@ -229,13 +296,7 @@ ul {
 }
 
 
-#fill-img {
-    width: 300px;
-    padding: 5px;
-    margin: 5px;
-    border: 2px;
-    border-radius: 20px;
-}
+
 
 #on-submit, #on-submit-cuisine {
     margin-left: 10px;
